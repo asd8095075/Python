@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>首页_ZQL个人博客 - 一个站在web后端技术员个人博客网站</title>
+<meta name="keywords" content="个人博客,zql个人博客,个人博客模板,zql" />
+<meta name="description" content="zql个人博客，是一个站在web后端技术员个人博客网站，提供个人博客模板免费资源下载的个人原创网站。" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/static/web/css/base.css" rel="stylesheet">
+<link href="/static/web/css/index.css" rel="stylesheet">
+<link href="/static/web/css/m.css" rel="stylesheet">
+<script src="/static/web/js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/static/web/js/comm.js"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+<header class="header-navigation" id="header">
+  <nav><div class="logo"><a href="/">zql个人博客</a></div>
+    <h2 id="mnavh"><span class="navicon"></span></h2>
+    <ul id="starlist">
+      <li><a href="{{ url_for('blue.index') }}">网站首页</a></li>
+      <li><a href="{{ url_for('blue.about') }}">关于我</a></li>
+    </ul>
+</nav>
+</header>
+<article>
+  <aside class="l_box">
+      <div class="about_me">
+        <h2>关于我</h2>
+        <ul>
+          <i><img src="/static/web/images/4.jpg"></i>
+          <p><b>zql</b>，一个95后草根站长！17年入行。一直潜心研究web后端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
+        </ul>
+      </div>
+      <div class="fenlei">
+        <h2>文章分类</h2>
+        <ul>
+            {% for item in classifi %}
+                <li><a href="{{ url_for('blue.classification',cid=item.id) }}">{{ item.name }}（{{ item.num }}）</a></li>
+            {% endfor %}
+        </ul>
+      </div>
+      <div class="guanzhu">
+        <h2>关注我 么么哒</h2>
+        <ul>
+          <img src="/static/web/images/wx.jpg">
+        </ul>
+      </div>
+  </aside>
+  <main class="r_box">
+          {% for j in article %}
+              <li><i><a href="/"><img src='{{ j.imgsrc }}'></a></i>
+                <h3><a href="{{url_for('blue.article_details',name=j.name)}}">{{ j.name }}</a></h3>
+                <p>{{ j.content }}</p>
+              </li>
+          {% endfor %}
+  </main>
+</article>
+<footer>
+</footer>
+<a href="#" class="cd-top">Top</a>
+</body>
+</html>
